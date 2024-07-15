@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        GameStatistic.UpdateScoreUI();
     }
     
     public class GameStatistic
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
         {
             CompareWithRecord(number);
             Score += number;
+            UpdateScoreUI();
+        }
+
+        internal static void UpdateScoreUI()
+        {
             instance.ScoreText.text = Score.ToString();
         }
 
