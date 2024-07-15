@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pot : MonoBehaviour
+public class Cauldron : MonoBehaviour
 {
     private int _ingredientCapacity = 5;
     private List<Ingredient> _ingredients = new();
