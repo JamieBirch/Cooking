@@ -1,38 +1,54 @@
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour/*, IDragHandler, IEndDragHandler, IBeginDragHandler*/
+public class Ingredient : MonoBehaviour
 {
-    private IngredientType type;
+    public IngredientType type;
     private Vector3 offset;
     private Rigidbody2D rb;
-    
-    // Start is called before the first frame update
-    void Start()
+    private bool isHeld;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        //TODO sound
-        // soundPlayer.playSound(pick);
-        
-    }
-
-    void OnMouseDrag()
-    {
-        transform.localPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-    }
-    
-    void OnMouseUpAsButton()
-    {
-        rb.bodyType = RigidbodyType2D.Dynamic;
-        //TODO stop highlight
     }
 
     void OnMouseDown()
     {
+        DragSetup();
+    }
+
+    public void DragSetup()
+    {
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.bodyType = RigidbodyType2D.Kinematic;
+        isHeld = true;
         //TODO highlight
     }
 
+    void OnMouseDrag()
+    {
+        FollowCursor();
+    }
 
+    public void FollowCursor()
+    {
+        transform.localPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+    }
+
+    void OnMouseUpAsButton()
+    {
+        Drop();
+    }
+
+    public void Drop()
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        isHeld = false;
+        //TODO stop highlight
+    }
+
+    public bool IsHeld()
+    {
+        return isHeld;
+    }
 }

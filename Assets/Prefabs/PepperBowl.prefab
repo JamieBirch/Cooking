@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3662160065760525324
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1871603909841177054, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_Size.x
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871603909841177054, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_Size.y
+      value: 3.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871603909841177054, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2040715090032257201, guid: d50302d0b1f44cb45a35989960e72ec9, type: 3}
+    - target: {fileID: 1871603909841177054, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213959429538614376, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: ingredientPrefab
+      value: 
+      objectReference: {fileID: 1137042496066891398, guid: bef7b4290b9d6ab41a69e3a9278ae64f, type: 3}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011050633647488355, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399720754643478477, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}
+      propertyPath: m_Name
+      value: PepperBowl
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d86e9eb4d8562fe4293e2587452767f5, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IngredientValueManager : MonoBehaviour
 {
-    public IngredientValueManager instance;
+    public static IngredientValueManager instance;
     public static Dictionary<IngredientType, int> ingredientValueDictionary = new();
     public IngredientValue[] ingredientValues;
     
