@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +18,10 @@ public class GameManager : MonoBehaviour
     
     public class GameStatistic
     {
-        private static int Score = 0;
-        private static int bestDishScore = 0;
+        private static float Score = 0;
+        private static float bestDishScore = 0;
 
-        public static void RegisterNewDish(int number)
+        public static void RegisterNewDish(float number)
         {
             CompareWithRecord(number);
             Score += number;
@@ -35,7 +33,7 @@ public class GameManager : MonoBehaviour
             instance.ScoreText.text = Score.ToString();
         }
 
-        public static void CompareWithRecord(int number)
+        public static void CompareWithRecord(float number)
         {
             if (number > bestDishScore)
             {
