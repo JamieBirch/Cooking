@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cauldron : MonoBehaviour
 {
+    public CauldronContent cauldronContent;
+    
     private int _ingredientCapacity = 5;
     private List<Ingredient> _ingredients = new();
     
@@ -45,7 +47,7 @@ public class Cauldron : MonoBehaviour
             string dishName = DefineDishName(ingredientGroupsByType);
             string dishIngredients = IngredientsToString(ingredientGroupsByType);
             GameManager.GameStatistic.RegisterNewDish(dishName, dishIngredients, dishScore);
-            EmptyPot();
+            EmptyCauldron();
         }
     }
 
@@ -102,9 +104,10 @@ public class Cauldron : MonoBehaviour
         return defaultDishName;
     }
 
-    private void EmptyPot()
+    public void EmptyCauldron()
     {
         _ingredients = new();
+        cauldronContent.EmptyContent();
     }
 
     private float CalculateDishScore(Dictionary<IngredientType, int> ingredientGroupsByType)
@@ -125,8 +128,8 @@ public class Cauldron : MonoBehaviour
             foreach (var ingredientGroup in ingredientGroupsByType)
             {
                 float multiplier = GetMultiplier(ingredientGroup.Value);
-                float currentIngredientScore = IngredientValueManager.ingredientValueDictionary[ingredientGroup.Key] * multiplier;
-                Debug.Log("for " + ingredientGroup.Key + ": amount " + ingredientGroup.Value + ", ingredient score " + currentIngredientScore);
+                float currentIngredientScore = IngredientValueManager.ingredientValueDictionary[ingredientGroup.Key] * ingredientGroup.Value * multiplier;
+                // Debug.Log("for " + ingredientGroup.Key + ": amount " + ingredientGroup.Value + ", ingredient score " + currentIngredientScore);
                 totalScore += currentIngredientScore;
             }
             Debug.Log("total score for dish: " + totalScore);
@@ -172,5 +175,6 @@ public class Cauldron : MonoBehaviour
     {
         Debug.Log("Ingredient added: " + ingredient.type);
         _ingredients.Add(ingredient);
+        cauldronContent.AddIngredient(ingredient);
     }
 }

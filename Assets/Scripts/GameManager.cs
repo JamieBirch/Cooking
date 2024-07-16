@@ -1,16 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public Cauldron cauldron;
+
     public Text ScoreText;
     public Text LastDishText;
     public Text BestDishText;
 
     private static string dishFormat = "{0} ({1}) [{2}]";
+
+    private static string scoreSaveKey = "Score";
+    private static string lastDishSaveKey = "LastDish";
+    private static string bestDishSaveKey = "BestDish";
     
     private void Awake()
     {
@@ -18,7 +25,65 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        GameStatistic.UpdateScoreUI();
+        LoadData();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey("r"))
+        {
+            Reload();
+        }
+        
+        if (Input.GetKey("l"))
+        {
+            cauldron.EmptyCauldron();
+            LoadData();
+        }
+    }
+
+    public void Reload()
+    {
+        PurgeSave();
+        ReloadScene();
+    }
+
+    public void LoadData()
+    {
+        UpdateUI(
+            PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
+            PlayerPrefs.GetString(lastDishSaveKey),
+            PlayerPrefs.GetString(bestDishSaveKey)
+            );
+    }
+
+    private void UpdateUI(string score, string lastDish, string bestDish)
+    {
+        ScoreText.text = score;
+        LastDishText.text = lastDish;
+        BestDishText.text = bestDish;
+    }
+
+    /*private void UpdateUI()
+    {
+        ScoreText.text = PlayerPrefs.GetFloat(scoreSaveKey).ToString();
+        LastDishText.text = PlayerPrefs.GetString(lastDishSaveKey);
+        BestDishText.text = PlayerPrefs.GetString(bestDishSaveKey);
+    }*/
+
+    private void PurgeSave()
+    {
+        PlayerPrefs.DeleteAll();
+        UpdateUI(
+            PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
+            PlayerPrefs.GetString(lastDishSaveKey),
+            PlayerPrefs.GetString(bestDishSaveKey)
+        );
+    }
+    
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     public class GameStatistic
@@ -29,20 +94,23 @@ public class GameManager : MonoBehaviour
         public static void RegisterNewDish(string dishName, string dishIngredients, float dishScore)
         {
             Score += dishScore;
-            UpdateScoreUI();
             string dishRegistrationString = String.Format(dishFormat, dishName, dishIngredients, dishScore);
-            instance.LastDishText.text = dishRegistrationString;
             // compare with best dish
             if (dishScore > bestDishScore)
             {
                 bestDishScore = dishScore;
-                instance.BestDishText.text = dishRegistrationString;
+                // instance.BestDishText.text = dishRegistrationString;
+                PlayerPrefs.SetString(bestDishSaveKey, dishRegistrationString);
             }
-        }
-
-        internal static void UpdateScoreUI()
-        {
-            instance.ScoreText.text = Score.ToString();
+            // instance.ScoreText.text = Score.ToString();
+            // instance.LastDishText.text = dishRegistrationString;
+            PlayerPrefs.SetFloat(scoreSaveKey, Score);
+            PlayerPrefs.SetString(lastDishSaveKey, dishRegistrationString);
+            instance.UpdateUI(
+                    PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
+                    PlayerPrefs.GetString(lastDishSaveKey),
+                    PlayerPrefs.GetString(bestDishSaveKey)
+                );
         }
     }
 }

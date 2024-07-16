@@ -19,7 +19,7 @@ PrefabInstance:
     - target: {fileID: 2425978887151140813, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: -7664561889530137309, guid: 2e9342d929cdd3241b6ada3d84b6fb22, type: 3}
+      objectReference: {fileID: 21300000, guid: 2e9342d929cdd3241b6ada3d84b6fb22, type: 3}
     - target: {fileID: 2911657700753347075, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5873748527669373879, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873748527669373879, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873748527669373879, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873748527669373879, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873748527669373879, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8270115308112055522, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
       propertyPath: m_Size.x
       value: 5.31
@@ -74,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: -7664561889530137309, guid: 2e9342d929cdd3241b6ada3d84b6fb22, type: 3}
     - target: {fileID: 8270115308112055522, guid: d668b9a941b7bfc4888adfae306331bf, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

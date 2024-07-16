@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  spriteRenderer: {fileID: 8270115308112055522}
+  sprite: {fileID: 0}
 --- !u!50 &5547186628031878094
 Rigidbody2D:
   serializedVersion: 4

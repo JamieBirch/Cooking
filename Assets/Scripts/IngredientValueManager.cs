@@ -21,10 +21,13 @@ public class IngredientValueManager : MonoBehaviour
         {
             instance = this;
         }
-        
-        foreach (IngredientValue ingredientValue in ingredientValues)
+
+        if (ingredientValueDictionary.Count == 0)
         {
-            ingredientValueDictionary.Add(ingredientValue.type, ingredientValue.value);
+            foreach (IngredientValue ingredientValue in ingredientValues)
+            {
+                ingredientValueDictionary.Add(ingredientValue.type, ingredientValue.value);
+            }
         }
     }
 }
