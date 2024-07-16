@@ -3,7 +3,6 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     public IngredientType type;
-    public SpriteRenderer spriteRenderer;
     public Sprite sprite;
     private Vector3 offset;
     private Rigidbody2D rb;
@@ -12,7 +11,6 @@ public class Ingredient : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer.sprite = sprite;
     }
 
     void OnMouseDown()

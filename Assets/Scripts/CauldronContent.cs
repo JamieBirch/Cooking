@@ -7,6 +7,7 @@ public class CauldronContent : MonoBehaviour
 
     public void AddIngredient(Ingredient ingredient)
     {
+        // Debug.Log("add " + ingredient.type);
         cauldronIngredients[ingredientCount].UpdateSprite(ingredient.sprite);
         ingredientCount++;
     }

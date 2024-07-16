@@ -173,7 +173,6 @@ public class Cauldron : MonoBehaviour
 
     private void Put(Ingredient ingredient)
     {
-        Debug.Log("Ingredient added: " + ingredient.type);
         _ingredients.Add(ingredient);
         cauldronContent.AddIngredient(ingredient);
     }
