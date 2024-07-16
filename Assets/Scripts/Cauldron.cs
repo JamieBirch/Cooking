@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,6 +21,17 @@ public class Cauldron : MonoBehaviour
     private static string fourfivePotatoDishName = "Картофельное пюре";
     private static string defaultDishName = "Суп";
 
+    private static Dictionary<IngredientType, string> IngredientTypeToRussianName =
+        new()
+        {
+            {IngredientType.meat, "мясо"},
+            {IngredientType.onion, "лук"},
+            {IngredientType.potato, "картофель"},
+            {IngredientType.carrot, "морковь"},
+            {IngredientType.bellPepper, "перец"}
+        };
+        
+
     private void Update()
     {
         if (_ingredients.Count == _ingredientCapacity)
@@ -33,10 +43,19 @@ public class Cauldron : MonoBehaviour
 
             float dishScore = CalculateDishScore(ingredientGroupsByType);
             string dishName = DefineDishName(ingredientGroupsByType);
-            Debug.Log(String.Format("Cooked {0} for {1} points.", dishName, dishScore) );
-            GameManager.GameStatistic.RegisterNewDish(dishScore);
+            string dishIngredients = IngredientsToString(ingredientGroupsByType);
+            GameManager.GameStatistic.RegisterNewDish(dishName, dishIngredients, dishScore);
             EmptyPot();
         }
+    }
+
+    private string IngredientsToString(Dictionary<IngredientType,int> ingredientGroupsByType)
+    {
+        return string.Join
+        (
+            ", ",
+            ingredientGroupsByType.Select(pair => string.Format("{0} {1}", pair.Value, IngredientTypeToRussianName[pair.Key])).ToArray()
+        );
     }
 
     private string DefineDishName(Dictionary<IngredientType, int> ingredientGroupsByType)
