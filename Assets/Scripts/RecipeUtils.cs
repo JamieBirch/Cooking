@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ public static class RecipeUtils
     private static string fourfiveOnionDishName = "Луковый суп";
     private static string fourfivePotatoDishName = "Картофельное пюре";
     private static string defaultDishName = "Суп";
+    
+    private static string dishFormat = "{0} ({1}) [{2}]";
+
 
     private static Dictionary<IngredientType, string> IngredientTypeToRussianName =
         new()
@@ -29,6 +33,11 @@ public static class RecipeUtils
             {IngredientType.carrot, "морковь"},
             {IngredientType.bellPepper, "перец"}
         };
+
+    public static string DishRegistrationString(Recipe dish)
+    {
+        return String.Format(dishFormat, dish.Name, IngredientsToString(dish.Ingredients), dish.Score);
+    }
     
     public static string IngredientsToString(Dictionary<IngredientType,int> ingredientGroupsByType)
     {
@@ -61,7 +70,7 @@ public static class RecipeUtils
                 totalScore += currentIngredientScore;
             }
         }
-        Debug.Log("total score for dish: " + totalScore);
+        // Debug.Log("total score for dish: " + totalScore);
         return totalScore;
     }
 

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,11 +15,11 @@ public class GameManager : MonoBehaviour
     public Text LastDishText;
     public Text BestDishText;
 
-    private static string dishFormat = "{0} ({1}) [{2}]";
 
     private static string scoreSaveKey = "Score";
     private static string lastDishSaveKey = "LastDish";
     private static string bestDishSaveKey = "BestDish";
+    private static string bestDishScoreSaveKey = "BestDishScore";
     
     private void Awake()
     {
@@ -40,6 +42,14 @@ public class GameManager : MonoBehaviour
             cauldron.EmptyCauldron();
             LoadData();
         }
+        
+        if (Input.GetKey("t"))
+        {
+            List<Recipe> allRecipes = RecipeGenerator.GenerateCombinations(RecipeUtils.ingredientsInRecipe, Enum.GetValues(typeof(IngredientType)) as IngredientType[]);
+            allRecipes.OrderBy(recipe => recipe.Score)
+                .ToList()
+                .ForEach(recipe => Debug.Log(RecipeUtils.DishRegistrationString(recipe)));
+        }
     }
 
     public void Reload()
@@ -55,6 +65,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.GetString(lastDishSaveKey),
             PlayerPrefs.GetString(bestDishSaveKey)
             );
+        GameStatistic.UpdateBestScore(PlayerPrefs.GetInt(bestDishScoreSaveKey));
     }
 
     private void UpdateUI(string score, string lastDish, string bestDish)
@@ -88,22 +99,21 @@ public class GameManager : MonoBehaviour
     
     public class GameStatistic
     {
-        private static float Score = 0;
-        private static float bestDishScore = 0;
+        private static int Score = 0;
+        private static int bestDishScore = 0;
 
-        public static void RegisterNewDish(string dishName, string dishIngredients, float dishScore)
+        public static void RegisterNewDish(Recipe newDish)
         {
-            Score += dishScore;
-            string dishRegistrationString = String.Format(dishFormat, dishName, dishIngredients, dishScore);
+            string dishRegistrationString = RecipeUtils.DishRegistrationString(newDish);
             // compare with best dish
-            if (dishScore > bestDishScore)
+            if (newDish.Score > bestDishScore)
             {
-                bestDishScore = dishScore;
-                // instance.BestDishText.text = dishRegistrationString;
+                bestDishScore = newDish.Score;
+                instance.BestDishText.text = dishRegistrationString;
                 PlayerPrefs.SetString(bestDishSaveKey, dishRegistrationString);
+                PlayerPrefs.SetInt(bestDishScoreSaveKey, newDish.Score);
             }
-            // instance.ScoreText.text = Score.ToString();
-            // instance.LastDishText.text = dishRegistrationString;
+            Score += newDish.Score;
             PlayerPrefs.SetFloat(scoreSaveKey, Score);
             PlayerPrefs.SetString(lastDishSaveKey, dishRegistrationString);
             instance.UpdateUI(
@@ -111,6 +121,11 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.GetString(lastDishSaveKey),
                     PlayerPrefs.GetString(bestDishSaveKey)
                 );
+        }
+
+        public static void UpdateBestScore(int newBestDishScore)
+        {
+            bestDishScore = newBestDishScore;
         }
     }
 }
