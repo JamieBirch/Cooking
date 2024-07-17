@@ -23,6 +23,11 @@ public class Cauldron : MonoBehaviour
         cauldronContent.EmptyContent();
     }
 
+    public bool isEmpty()
+    {
+        return _ingredients.Count == 0;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //TODO highlight

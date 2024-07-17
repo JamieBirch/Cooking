@@ -29,8 +29,6 @@ public class IngredientHighlighter : MonoBehaviour
 
                 // Apply the highlight material to the new object
                 currentObject = hitObject;
-                // spriteRenderer = currentObject.GetComponent<SpriteRenderer>();
-
                 if (currentObject.TryGetComponent(out SpriteRenderer sr))
                 {
                     spriteRenderer = sr;
