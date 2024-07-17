@@ -46,8 +46,8 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
-  spriteExtrude: 1
+  spriteMode: 1
+  spriteExtrude: 5
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -56,7 +56,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -335,10 +335,55 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 205, y: -4}
+      - {x: 187, y: 54}
+      - {x: 164, y: 70}
+      - {x: 140, y: 70}
+      - {x: 117, y: 79}
+      - {x: 119, y: 81}
+      - {x: 135, y: 72}
+      - {x: 141, y: 72}
+      - {x: 151, y: 74}
+      - {x: 161, y: 88}
+      - {x: 159, y: 114}
+      - {x: 122, y: 126}
+      - {x: 104, y: 115}
+      - {x: 88, y: 98}
+      - {x: 47, y: 155}
+      - {x: 11, y: 179}
+      - {x: -3, y: 186}
+      - {x: -42, y: 186}
+      - {x: -90, y: 159}
+      - {x: -113, y: 155}
+      - {x: -143, y: 144}
+      - {x: -157, y: 123}
+      - {x: -145, y: 94}
+      - {x: -125, y: 93}
+      - {x: -115, y: 99}
+      - {x: -111, y: 101}
+      - {x: -109, y: 114}
+      - {x: -105, y: 115}
+      - {x: -112, y: 98}
+      - {x: -119, y: 93}
+      - {x: -131, y: 80}
+      - {x: -171, y: 55}
+      - {x: -189, y: 29}
+      - {x: -191, y: 19}
+      - {x: -192, y: 9}
+      - {x: -205, y: -7}
+      - {x: -205, y: -73}
+      - {x: -203, y: -98}
+      - {x: -166, y: -150}
+      - {x: -120, y: -184}
+      - {x: -116, y: -186}
+      - {x: 117, y: -186}
+      - {x: 155, y: -165}
+      - {x: 200, y: -99}
+      - {x: 205, y: -61}
     bones: []
     spriteID: e6941e312855c704f8f4481ca701a329
-    internalID: 0
+    internalID: -1516929547
     vertices: []
     indices: 
     edges: []
