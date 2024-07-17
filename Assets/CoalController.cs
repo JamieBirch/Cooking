@@ -11,13 +11,12 @@ public class CoalController : MonoBehaviour
     private CoalPreset currentPreset;
     private bool hasIngredients;
     private float timeElapsed;
-    
+
     public SpriteRenderer spriteRendererHot;
 
     private void Start()
     {
         SetPreset(idlePreset);
-        StartCoroutine(AnimateEmbers());
     }
 
     private void Update()
@@ -26,11 +25,11 @@ public class CoalController : MonoBehaviour
         
         if (hasIngredients && currentPreset != hotPreset)
         {
-            StartCoroutine(SwitchPreset(hotPreset));
+            StartCoroutine(SwitchPreset(hotPreset)); // switch to hot
         }
         else if (!hasIngredients && currentPreset != idlePreset)
         {
-            StartCoroutine(SwitchPreset(idlePreset));
+            StartCoroutine(SwitchPreset(idlePreset)); //switch to idle
         }
     }
 
@@ -42,36 +41,20 @@ public class CoalController : MonoBehaviour
 
     private IEnumerator SwitchPreset(CoalPreset newPreset)
     {
-        float switchDuration = 1.0f;
+        float switchDuration = newPreset.animationTime;
         float switchTime = 0f;
-        
+
         while (switchTime < switchDuration)
         {
             switchTime += Time.deltaTime;
             float t = switchTime / switchDuration;
-            
-            spriteRendererHot.color = new Color(1f, 1f, 1f, t);
+            float alpha = newPreset.brightnessCurve.Evaluate(t);
+            spriteRendererHot.color = new Color(1f,1f,1f, alpha); //update transparency of hot coals sprite
 
             yield return null;
         }
 
         SetPreset(newPreset);
-    }
-
-    private IEnumerator AnimateEmbers()
-    {
-        while (true)
-        {
-            timeElapsed += Time.deltaTime;
-            float normalizedTime = timeElapsed / currentPreset.animationTime;
-
-            if (normalizedTime >= 1f)
-            {
-                timeElapsed = 0f;
-            }
-
-            yield return null;
-        }
     }
 
     private bool CheckIfHasIngredients()

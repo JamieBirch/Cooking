@@ -4,5 +4,5 @@ using UnityEngine;
 public class CoalPreset : ScriptableObject
 {
     public float animationTime;
-    public AnimationCurve emberBrightnessCurve;
+    public AnimationCurve brightnessCurve;
 }

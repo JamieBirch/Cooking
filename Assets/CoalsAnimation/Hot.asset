@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca07edc6bda2c1a4f9c1c7c144876de6, type: 3}
   m_Name: Hot
   m_EditorClassIdentifier: 
-  animationTime: 5
-  emberBrightnessCurve:
+  animationTime: 3
+  brightnessCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.9981079
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.0012817
-      value: 0.0056533813
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -37,4 +37,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  coalSprite: {fileID: -1199498626004448934, guid: 6df650e3b736291419188fee8f1494ba, type: 3}
