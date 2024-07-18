@@ -7,7 +7,7 @@ public class Cauldron : MonoBehaviour
     public CauldronContent cauldronContent;
 
     // The list of ingredients currently in the cauldron.
-    private readonly List<IngredientType> _ingredients = new();
+    private static List<IngredientType> _ingredients = new();
 
     // Checks if the cauldron has enough ingredients to create a new recipe on every frame update.
     private void Update()
