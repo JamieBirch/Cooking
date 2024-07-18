@@ -10,7 +10,6 @@ public class CoalController : MonoBehaviour
 
     private CoalPreset currentPreset;
     private bool hasIngredients;
-    private float timeElapsed;
 
     public SpriteRenderer spriteRendererHot;
 
@@ -36,7 +35,6 @@ public class CoalController : MonoBehaviour
     private void SetPreset(CoalPreset preset)
     {
         currentPreset = preset;
-        timeElapsed = 0f;
     }
 
     private IEnumerator SwitchPreset(CoalPreset newPreset)
