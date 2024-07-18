@@ -7,20 +7,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Singleton instance of the GameManager.
     public static GameManager instance;
 
+    // Reference to the Cauldron in the game.
     public Cauldron cauldron;
 
+    // UI elements to display score and dish information.
     public Text ScoreText;
     public Text LastDishText;
     public Text BestDishText;
 
-
+    // Keys for saving and loading data using PlayerPrefs.
     private static string scoreSaveKey = "Score";
     private static string lastDishSaveKey = "LastDish";
     private static string bestDishSaveKey = "BestDish";
     private static string bestDishScoreSaveKey = "BestDishScore";
     
+    // Initializes the GameManager instance and loads saved data on awake.
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
         LoadData();
     }
 
+    // Handles input to reload the scene, empty the cauldron, or log recipe combinations.
     private void Update()
     {
         if (Input.GetKey("r"))
@@ -52,60 +57,53 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Reloads the scene and purges saved data.
     public void Reload()
     {
         PurgeSave();
         ReloadScene();
     }
 
+    // Loads saved data from PlayerPrefs and updates the UI accordingly.
     public void LoadData()
     {
-        UpdateUI(
-            PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
-            PlayerPrefs.GetString(lastDishSaveKey),
-            PlayerPrefs.GetString(bestDishSaveKey)
-            );
+        UpdateUI();
         GameStatistic.UpdateBestScore(PlayerPrefs.GetInt(bestDishScoreSaveKey));
     }
 
-    private void UpdateUI(string score, string lastDish, string bestDish)
+    // Updates the UI elements with new score and dish information.
+    private void UpdateUI()
     {
-        ScoreText.text = score;
-        LastDishText.text = lastDish;
-        BestDishText.text = bestDish;
-    }
-
-    /*private void UpdateUI()
-    {
-        ScoreText.text = PlayerPrefs.GetFloat(scoreSaveKey).ToString();
+        ScoreText.text = PlayerPrefs.GetInt(scoreSaveKey).ToString();
         LastDishText.text = PlayerPrefs.GetString(lastDishSaveKey);
         BestDishText.text = PlayerPrefs.GetString(bestDishSaveKey);
-    }*/
+    }
 
+    // Purges all saved data and updates the UI.
     private void PurgeSave()
     {
         PlayerPrefs.DeleteAll();
-        UpdateUI(
-            PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
-            PlayerPrefs.GetString(lastDishSaveKey),
-            PlayerPrefs.GetString(bestDishSaveKey)
-        );
+        UpdateUI();
     }
     
+    // Reloads the current scene.
     private void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
+    // Nested class to handle game statistics like score and best dish.
     public class GameStatistic
     {
         private static int Score = 0;
         private static int bestDishScore = 0;
 
+        // Registers a new dish, updates scores, and saves data if it's the best dish.
         public static void RegisterNewDish(Recipe newDish)
         {
             string dishRegistrationString = RecipeUtils.DishRegistrationString(newDish);
-            // compare with best dish
+            
+            // Compare with best dish and update if current dish is better.
             if (newDish.Score > bestDishScore)
             {
                 bestDishScore = newDish.Score;
@@ -113,16 +111,14 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetString(bestDishSaveKey, dishRegistrationString);
                 PlayerPrefs.SetInt(bestDishScoreSaveKey, newDish.Score);
             }
+            
             Score += newDish.Score;
-            PlayerPrefs.SetFloat(scoreSaveKey, Score);
+            PlayerPrefs.SetInt(scoreSaveKey, Score);
             PlayerPrefs.SetString(lastDishSaveKey, dishRegistrationString);
-            instance.UpdateUI(
-                    PlayerPrefs.GetFloat(scoreSaveKey).ToString(),
-                    PlayerPrefs.GetString(lastDishSaveKey),
-                    PlayerPrefs.GetString(bestDishSaveKey)
-                );
+            instance.UpdateUI();
         }
 
+        // Updates the best dish score.
         public static void UpdateBestScore(int newBestDishScore)
         {
             bestDishScore = newBestDishScore;

@@ -7,13 +7,6 @@ public class Recipe
     public string Name;
     public Dictionary<IngredientType, int> Ingredients;
 
-    public Recipe(Dictionary<IngredientType, int> ingredients)
-    {
-        Ingredients = ingredients;
-        Score = RecipeUtils.CalculateDishScore(ingredients);
-        Name = RecipeUtils.DefineDishName(ingredients);
-    }
-    
     public Recipe(IEnumerable<IngredientType> recipeIngredients)
     {
         Dictionary<IngredientType,int> ingredients = recipeIngredients

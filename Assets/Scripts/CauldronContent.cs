@@ -2,19 +2,30 @@ using UnityEngine;
 
 public class CauldronContent : MonoBehaviour
 {
+    // Array of CauldronIngredient representing the visual components of the ingredients in the cauldron.
     public CauldronIngredient[] cauldronIngredients;
-    private int ingredientCount = 0;
 
+    // Counter to keep track of the number of ingredients added to the cauldron.
+    private int _ingredientCount = 0;
+
+    // Adds an ingredient to the cauldron and updates its visual representation.
     public void AddIngredient(Ingredient ingredient)
     {
-        // Debug.Log("add " + ingredient.type);
-        cauldronIngredients[ingredientCount].UpdateSprite(ingredient.sprite);
-        ingredientCount++;
+        if (_ingredientCount < cauldronIngredients.Length)
+        {
+            cauldronIngredients[_ingredientCount].UpdateSprite(ingredient.sprite);
+            _ingredientCount++;
+        }
+        else
+        {
+            Debug.LogWarning("Cauldron is full, cannot add more ingredients.");
+        }
     }
 
+    // Empties the cauldron content, resetting all visual components to their default state.
     public void EmptyContent()
     {
-        ingredientCount = 0;
+        _ingredientCount = 0;
         foreach (CauldronIngredient cauldronIngredient in cauldronIngredients)
         {
             cauldronIngredient.SetToDefault();
