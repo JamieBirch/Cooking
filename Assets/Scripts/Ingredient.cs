@@ -6,6 +6,7 @@ public class Ingredient : MonoBehaviour
     public Sprite sprite;
     private Rigidbody2D rb;
     private bool isHeld;
+    private Vector2 lastMousePosition;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Ingredient : MonoBehaviour
     public void FollowCursor()
     {
         transform.localPosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void OnMouseUpAsButton()
@@ -40,8 +42,11 @@ public class Ingredient : MonoBehaviour
 
     public void Drop()
     {
+        Vector2 direction = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition).normalized;
+        rb.velocity = direction * 10;
         rb.bodyType = RigidbodyType2D.Dynamic;
         isHeld = false;
+        lastMousePosition = Vector2.zero;
     }
 
     public bool IsHeld()
