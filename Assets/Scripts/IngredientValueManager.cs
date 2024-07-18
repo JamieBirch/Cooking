@@ -9,7 +9,7 @@ public class IngredientValueManager : MonoBehaviour
     public static Dictionary<IngredientType, int> IngredientValueDictionary = new();
 
     // Path to the JSON file containing ingredient values.
-    public static string IngredientValueJsonPath = "Assets/ingredient_value.json";
+    public static string IngredientValueJsonPath = "ingredient_value.json";
     
     // Serializable class representing an ingredient's type and value.
     [Serializable]
