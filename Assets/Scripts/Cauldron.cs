@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,10 +29,8 @@ public class Cauldron : MonoBehaviour
         return _ingredients.Count == 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        //TODO highlight
-        // Debug.Log("Touches Pot");
         if (other.TryGetComponent(out Ingredient ingredient))
         {
             if (!ingredient.IsHeld())
