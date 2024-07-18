@@ -22,18 +22,25 @@ public class IngredientHighlighter : MonoBehaviour
             if (hitObject != currentObject)
             {
                 // Restore the previous object's material
-                if (currentObject != null)
-                {
-                    spriteRenderer.material = originalMaterial;
-                }
+                RestoreOriginalMaterial();
 
-                // Apply the highlight material to the new object
-                currentObject = hitObject;
-                if (currentObject.TryGetComponent(out SpriteRenderer sr))
+                if (hitObject.TryGetComponent(out Ingredient ingredientComponent))
                 {
-                    spriteRenderer = sr;
-                    originalMaterial = spriteRenderer.material;
-                    spriteRenderer.material = highlightMaterial;
+                    if (ingredientComponent.IsHeld())
+                    {
+                        RestoreOriginalMaterial();
+                    }
+                    else
+                    {
+                        // Apply the highlight material to the new object
+                        currentObject = hitObject;
+                        if (currentObject.TryGetComponent(out SpriteRenderer sr))
+                        {
+                            spriteRenderer = sr;
+                            originalMaterial = spriteRenderer.material;
+                            spriteRenderer.material = highlightMaterial;
+                        }
+                    }
                 }
             }
         }
@@ -45,6 +52,14 @@ public class IngredientHighlighter : MonoBehaviour
                 spriteRenderer.material = originalMaterial;
                 currentObject = null;
             }
+        }
+    }
+
+    private void RestoreOriginalMaterial()
+    {
+        if (currentObject != null)
+        {
+            spriteRenderer.material = originalMaterial;
         }
     }
 }
