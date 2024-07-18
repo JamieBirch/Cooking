@@ -56,7 +56,7 @@ public static class RecipeUtils
         {
             foreach (var ingredientGroup in ingredientGroupsByType)
             {
-                totalScore += IngredientValueManager.ingredientValueDictionary[ingredientGroup.Key];
+                totalScore += IngredientValueManager.IngredientValueDictionary[ingredientGroup.Key];
             }
             totalScore *= (int)allIngredientsDifferentMultiplier;
         }
@@ -65,7 +65,7 @@ public static class RecipeUtils
             foreach (var ingredientGroup in ingredientGroupsByType)
             {
                 float multiplier = GetMultiplier(ingredientGroup.Value);
-                int currentIngredientScore = (int) (IngredientValueManager.ingredientValueDictionary[ingredientGroup.Key] * ingredientGroup.Value * multiplier);
+                int currentIngredientScore = (int) (IngredientValueManager.IngredientValueDictionary[ingredientGroup.Key] * ingredientGroup.Value * multiplier);
                 // Debug.Log("for " + ingredientGroup.Key + ": amount " + ingredientGroup.Value + ", ingredient score " + currentIngredientScore);
                 totalScore += currentIngredientScore;
             }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IngredientValueManager : MonoBehaviour
 {
-    public static Dictionary<IngredientType, int> ingredientValueDictionary = new();
+    public static Dictionary<IngredientType, int> IngredientValueDictionary = new();
     public static string IngredientValueJsonPath = "Assets/ingredient_value.json";
     
     [Serializable]
@@ -23,7 +23,7 @@ public class IngredientValueManager : MonoBehaviour
     
     private void Awake()
     {
-        if (ingredientValueDictionary.Count == 0)
+        if (IngredientValueDictionary.Count == 0)
         {
             string json = ExtractJsonString();
 
@@ -37,7 +37,7 @@ public class IngredientValueManager : MonoBehaviour
                 {
                     if (Enum.TryParse(ingredientValue.type, true, out IngredientType ingredientType))
                     {
-                        ingredientValueDictionary[ingredientType] = ingredientValue.value;
+                        IngredientValueDictionary[ingredientType] = ingredientValue.value;
                     }
                     else
                     {
