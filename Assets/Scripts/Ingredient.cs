@@ -43,7 +43,7 @@ public class Ingredient : MonoBehaviour
     public void Drop()
     {
         Vector2 direction = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePosition).normalized;
-        rb.velocity = direction * 10;
+        rb.velocity = direction * 2;
         rb.bodyType = RigidbodyType2D.Dynamic;
         isHeld = false;
         lastMousePosition = Vector2.zero;
