@@ -129,7 +129,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 35115509}
-  - component: {fileID: 35115510}
   - component: {fileID: 35115511}
   - component: {fileID: 35115512}
   m_Layer: 0
@@ -155,19 +154,6 @@ Transform:
   - {fileID: 1637208451}
   m_Father: {fileID: 809918173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35115510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35115508}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8871d22bde8064b8e585d68c3a7a59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cauldronContent: {fileID: 1238753163}
 --- !u!60 &35115511
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2314,7 +2300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idlePreset: {fileID: 11400000, guid: 63a4f8f8636888f4580b2ea8297de28b, type: 2}
   hotPreset: {fileID: 11400000, guid: 0dc14fd2020f33646968cc543f1e9cc6, type: 2}
-  cauldron: {fileID: 35115510}
+  cauldron: {fileID: 1637208452}
   spriteRendererHot: {fileID: 1189773139}
 --- !u!1 &1575501682
 GameObject:
@@ -2678,7 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef598f42231f0a94598276269a74e33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cauldron: {fileID: 35115510}
+  cauldron: {fileID: 1637208452}
   ScoreText: {fileID: 83568362}
   LastDishText: {fileID: 38791835}
   BestDishText: {fileID: 741671475}
@@ -2791,7 +2777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1828390083}
   m_Layer: 5
-  m_Name: middle
+  m_Name: canvasContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

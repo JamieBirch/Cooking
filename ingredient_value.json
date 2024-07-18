@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    { "type": "meat", "value": 50 },
+    { "type": "onion", "value": 40 },
+    { "type": "bellPepper", "value": 30 },
+    { "type": "carrot", "value": 20 },
+    { "type": "potato", "value": 10 }
+  ]
+}

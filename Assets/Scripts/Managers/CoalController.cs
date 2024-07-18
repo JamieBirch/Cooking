@@ -10,7 +10,7 @@ public class CoalController : MonoBehaviour
     public CoalPreset hotPreset;
 
     // Reference to the cauldron to check for ingredients.
-    public Cauldron cauldron;
+    public CauldronManager cauldronManager;
 
     // The current preset being used.
     private CoalPreset _currentPreset;
@@ -70,6 +70,6 @@ public class CoalController : MonoBehaviour
     // Checks if the cauldron has ingredients.
     private bool CheckIfHasIngredients()
     {
-        return !cauldron.IsEmpty();
+        return !cauldronManager.IsEmpty();
     }
 }

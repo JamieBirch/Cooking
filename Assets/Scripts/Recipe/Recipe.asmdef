@@ -1,0 +1,16 @@
+{
+    "name": "Recipe",
+    "rootNamespace": "",
+    "references": [
+        "GUID:464e1cf17dbd91a4da2189efc80a8f9a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

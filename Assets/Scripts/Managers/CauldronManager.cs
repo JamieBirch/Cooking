@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cauldron : MonoBehaviour
+public class CauldronManager : MonoBehaviour
 {
     // The content of the cauldron, responsible for visual representation
     public CauldronContent cauldronContent;

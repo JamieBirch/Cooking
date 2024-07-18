@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Reference to the Cauldron in the game.
-    public Cauldron cauldron;
+    public CauldronManager cauldronManager;
 
     // UI elements to display score and dish information.
     public Text ScoreText;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         
         if (Input.GetKey("l"))
         {
-            cauldron.EmptyCauldron();
+            cauldronManager.EmptyCauldron();
             LoadData();
         }
         
