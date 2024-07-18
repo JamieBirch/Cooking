@@ -4,7 +4,6 @@ public class Ingredient : MonoBehaviour
 {
     public IngredientType type;
     public Sprite sprite;
-    private Vector3 offset;
     private Rigidbody2D rb;
     private bool isHeld;
 
@@ -20,10 +19,8 @@ public class Ingredient : MonoBehaviour
 
     public void DragSetup()
     {
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.bodyType = RigidbodyType2D.Kinematic;
         isHeld = true;
-        //TODO highlight
     }
 
     void OnMouseDrag()
@@ -33,7 +30,7 @@ public class Ingredient : MonoBehaviour
 
     public void FollowCursor()
     {
-        transform.localPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+        transform.localPosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void OnMouseUpAsButton()
@@ -45,7 +42,6 @@ public class Ingredient : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
         isHeld = false;
-        //TODO stop highlight
     }
 
     public bool IsHeld()

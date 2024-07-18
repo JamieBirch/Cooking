@@ -5,15 +5,10 @@ public class IngredientSupplier : MonoBehaviour
     public GameObject ingredientPrefab;
     private Ingredient activeIngredient;
 
-    private void OnMouseOver()
-    {
-        //TODO highlight
-    }
-    
     void OnMouseDown()
     {
         //TODO Sound
-        activeIngredient = Instantiate(ingredientPrefab, transform.position, Quaternion.identity).GetComponent<Ingredient>();
+        activeIngredient = Instantiate(ingredientPrefab, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).GetComponent<Ingredient>();
         activeIngredient.DragSetup();
     }
     
