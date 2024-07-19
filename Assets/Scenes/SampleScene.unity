@@ -2300,7 +2300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idlePreset: {fileID: 11400000, guid: 63a4f8f8636888f4580b2ea8297de28b, type: 2}
   hotPreset: {fileID: 11400000, guid: 0dc14fd2020f33646968cc543f1e9cc6, type: 2}
-  cauldron: {fileID: 1637208452}
+  cauldronManager: {fileID: 1637208452}
   spriteRendererHot: {fileID: 1189773139}
 --- !u!1 &1575501682
 GameObject:
@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef598f42231f0a94598276269a74e33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cauldron: {fileID: 1637208452}
+  cauldronManager: {fileID: 0}
   ScoreText: {fileID: 83568362}
   LastDishText: {fileID: 38791835}
   BestDishText: {fileID: 741671475}
