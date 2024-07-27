@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class IngredientValueManager : MonoBehaviour
@@ -8,8 +7,8 @@ public class IngredientValueManager : MonoBehaviour
     // Dictionary to store ingredient types and their corresponding values.
     public static Dictionary<IngredientType, int> IngredientValueDictionary = new();
 
-    // Path to the JSON file containing ingredient values.
-    public static string IngredientValueJsonPath = "ingredient_value.json";
+    // Path to the JSON file in Resources folder containing ingredient values.
+    public static string IngredientValueJsonPath = "ingredient_value";
     
     // Serializable class representing an ingredient's type and value.
     [Serializable]
@@ -57,9 +56,21 @@ public class IngredientValueManager : MonoBehaviour
         }
     }
 
-    // Extracts and returns the JSON string from the specified file path.
+    // Extracts and returns the JSON string from the Resources folder.
     private static string ExtractJsonString()
     {
-        return File.ReadAllText(IngredientValueJsonPath);
+        // Load the TextAsset from the Resources folder
+        TextAsset textAsset = Resources.Load<TextAsset>(IngredientValueJsonPath);
+
+        // Check if the TextAsset is found and not null
+        if (textAsset != null)
+        {
+            return textAsset.text;
+        }
+        else
+        {
+            Debug.LogError($"Could not find JSON file at Resources/{IngredientValueJsonPath}.json");
+            return string.Empty;
+        }
     }
 }
